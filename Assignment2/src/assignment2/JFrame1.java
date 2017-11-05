@@ -202,6 +202,11 @@ public class JFrame1 extends javax.swing.JFrame {
         resButton.setMaximumSize(new java.awt.Dimension(70, 23));
         resButton.setMinimumSize(new java.awt.Dimension(70, 23));
         resButton.setPreferredSize(new java.awt.Dimension(70, 23));
+        resButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Add");
         addButton.setMaximumSize(new java.awt.Dimension(70, 23));
@@ -256,6 +261,17 @@ public class JFrame1 extends javax.swing.JFrame {
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         // TODO add your handling code here:
+        it.remove();
+        if(it.hasNext())
+            setDetails();
+        else if(it.hasPrevious())
+        {
+            setPreviousDetails(2);
+        }
+        else
+        {
+            callJFrame2();
+        }
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
@@ -265,12 +281,19 @@ public class JFrame1 extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
         // TODO add your handling code here:
-        setPreviousDetails();
+        setPreviousDetails(1);
     }//GEN-LAST:event_prevButtonActionPerformed
 
-    private void setPreviousDetails()
+    private void resButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resButtonActionPerformed
+        // TODO add your handling code here:
+        
+        delDetails();
+        
+        callJFrame2();
+    }//GEN-LAST:event_resButtonActionPerformed
+
+    private void setPreviousDetails(int i)
     {
-        int i=1;
         while(it.hasPrevious()&&i<=2)
         {
             it.previous();
@@ -294,6 +317,22 @@ public class JFrame1 extends javax.swing.JFrame {
                 gradFlag.setText("Not Yet Graduated");
         }
         
+    }
+    
+    private void delDetails()
+    {
+        s.clear();
+    }
+    
+    private void callJFrame2()
+    {
+        this.setVisible(false);
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame2(new Assignment2()).setVisible(true);
+            }
+        });
     }
     
     /**

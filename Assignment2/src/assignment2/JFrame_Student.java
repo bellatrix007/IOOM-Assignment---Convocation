@@ -261,6 +261,7 @@ public class JFrame_Student extends javax.swing.JFrame {
         else if(course.equals("PG+PhD"))
         {
             dept.setText("NA");
+            setSpecialization();
             setYear("Year of Conformation to Doctoral:");
         }
     }
