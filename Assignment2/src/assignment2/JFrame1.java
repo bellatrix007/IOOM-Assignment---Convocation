@@ -28,6 +28,13 @@ public class JFrame1 extends javax.swing.JFrame {
         setDetails();
     }
     
+    public JFrame1(ArrayList<student> s1,ListIterator litr) {
+        initComponents();
+        s = s1;
+        it = litr;
+        setDetails();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,7 +58,7 @@ public class JFrame1 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         cre = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        modifyButton = new javax.swing.JButton();
         delButton = new javax.swing.JButton();
         resButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
@@ -178,13 +185,13 @@ public class JFrame1 extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Modify");
-        jButton2.setMaximumSize(new java.awt.Dimension(70, 23));
-        jButton2.setMinimumSize(new java.awt.Dimension(70, 23));
-        jButton2.setPreferredSize(new java.awt.Dimension(70, 23));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        modifyButton.setText("Modify");
+        modifyButton.setMaximumSize(new java.awt.Dimension(70, 23));
+        modifyButton.setMinimumSize(new java.awt.Dimension(70, 23));
+        modifyButton.setPreferredSize(new java.awt.Dimension(70, 23));
+        modifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                modifyButtonActionPerformed(evt);
             }
         });
 
@@ -212,6 +219,11 @@ public class JFrame1 extends javax.swing.JFrame {
         addButton.setMaximumSize(new java.awt.Dimension(70, 23));
         addButton.setMinimumSize(new java.awt.Dimension(70, 23));
         addButton.setPreferredSize(new java.awt.Dimension(70, 23));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,7 +236,7 @@ public class JFrame1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(delButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -241,7 +253,7 @@ public class JFrame1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(delButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,12 +264,23 @@ public class JFrame1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+       
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame_Search(s).setVisible(true);
+            }
+        });
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame_Modify(s,it).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_modifyButtonActionPerformed
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         // TODO add your handling code here:
@@ -275,22 +298,27 @@ public class JFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        // TODO add your handling code here:
         setDetails();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
-        // TODO add your handling code here:
         setPreviousDetails(1);
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void resButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resButtonActionPerformed
-        // TODO add your handling code here:
         
         delDetails();
-        
         callJFrame2();
     }//GEN-LAST:event_resButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame2(s).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_addButtonActionPerformed
 
     private void setPreviousDetails(int i)
     {
@@ -376,13 +404,13 @@ public class JFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel cre;
     private javax.swing.JButton delButton;
     private javax.swing.JLabel gradFlag;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modifyButton;
     private javax.swing.JLabel name;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton prevButton;

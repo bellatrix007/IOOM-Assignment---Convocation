@@ -5,6 +5,9 @@
  */
 package assignment2;
 
+import java.util.ArrayList;
+import java.util.ListIterator;
+
 /**
  *
  * @author Aditi
@@ -14,7 +17,10 @@ public class JFrame_Search extends javax.swing.JFrame {
     /**
      * Creates new form JFrame_Search
      */
-    public JFrame_Search() {
+    private ArrayList<student> s;
+    private int turnB = 0;  //whether the button is for search or try again
+    public JFrame_Search(ArrayList<student> s1) {
+        s=s1;
         initComponents();
     }
 
@@ -28,42 +34,161 @@ public class JFrame_Search extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        rollLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        roll = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "SEARCH", 0, 0, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 0, 153))); // NOI18N
 
+        rollLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        rollLabel.setText("Enter roll number:");
+
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        nameLabel.setText("Enter name (Optional):");
+
+        roll.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        roll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollActionPerformed(evt);
+            }
+        });
+
+        name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 271, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameLabel)
+                    .addComponent(rollLabel)
+                    .addComponent(roll)
+                    .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(rollLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(searchButton)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(searchButton)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rollActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        if(turnB==0)
+            search();
+        else
+            tryAgain();    
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void search()
+    {
+        ListIterator it = s.listIterator();
+        int flag = 0;
+        while(it.hasNext())
+        {
+            student s1 = (student)it.next();
+            if(s1.getRollNumber().equals(roll.getText()))
+            {
+                if(name.getText().equals(""))
+                {
+                    flag = 1;
+                    break;
+                }
+                else if(name.getText().equals(s1.getName()))
+                {
+                    flag = 1;
+                    break;
+                }   
+            }
+        }
+        if(flag==1)
+        {
+            it.previous();
+            callJFrame1(it);
+        }
+        else
+        {
+            rollLabel.setText("Student not found !!!!");
+            roll.setVisible(false);
+            nameLabel.setVisible(false);
+            name.setVisible(false);
+            searchButton.setText("Try again");
+            turnB = 1;
+        }
+    }
+    
+    private void tryAgain()
+    {
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame_Search(s).setVisible(true);
+            }
+        });
+    }
+    
+    private void callJFrame1(ListIterator it)
+    {
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame1(s,it).setVisible(true);
+            }
+        });
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -94,12 +219,17 @@ public class JFrame_Search extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Search().setVisible(true);
+                new JFrame_Search(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField name;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField roll;
+    private javax.swing.JLabel rollLabel;
+    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }

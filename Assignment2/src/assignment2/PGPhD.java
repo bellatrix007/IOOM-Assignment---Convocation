@@ -23,6 +23,21 @@ class PGPhD extends student //derived class
         setGradStatus(regPeriod, credits);
     }
     
+    void setCGPA(int s)
+    {
+        this.CGPA = s;
+    }
+    
+    void setThesis(String s)
+    {
+        this.thesisArea = s;
+    }
+    
+    void setYear(int s)
+    {
+        this.year = s;
+    }
+    
     void setGradStatus(int regPeriod, int credits)  //to set the graduating status of student
     {
         if((regPeriod>=4&&regPeriod<=7)&&credits>=138)

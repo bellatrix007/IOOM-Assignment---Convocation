@@ -24,6 +24,26 @@ class PG extends student    //derived class
         setGradStatus(regPeriod, credits);
     }
     
+    void setDept(String s)
+    {
+        this.dept = s;
+    }
+    
+    void setSpe(String s)
+    {
+        this.specialization = s;
+    }
+    
+    void setCGPA(int s)
+    {
+        this.CGPA = s;
+    }
+    
+    void setThesis(String s)
+    {
+        this.thesisArea = s;
+    }
+    
     void setGradStatus(int regPeriod, int credits)  //to set if the student is graduating
     {
         if((regPeriod>=2&&regPeriod<=8)&&credits>=80)

@@ -40,6 +40,57 @@ class student
     {
     }
     //setters
+    
+    void setCourse(String s)
+    {
+        this.course = s;
+    }
+    
+    void setRoll(String s)
+    {
+        this.roll = s;
+    }
+    
+    void setName(String s)
+    {
+        this.name = s;
+    }
+    
+    void setDept(String s)
+    {
+        
+    }
+    
+    void setSpe(String s)
+    {
+        
+    }
+    
+    void setReg(int s)
+    {
+        this.regPeriod = s;
+    }
+    
+    void setCGPA(int s)
+    {
+        
+    }
+    
+    void setCredits(int s)
+    {
+        this.credits = s;
+    }
+    
+    void setThesis(String s)
+    {
+        
+    }
+    
+    void setYear(int s)
+    {
+        
+    }
+    
     void setGradStatus()
     {
         this.gradFlag = 1;

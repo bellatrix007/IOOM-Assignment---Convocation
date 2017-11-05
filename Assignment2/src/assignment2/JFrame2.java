@@ -7,6 +7,7 @@
 package assignment2;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -29,6 +30,7 @@ public class JFrame2 extends javax.swing.JFrame {
         s = s1;
         initComponents();
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -133,21 +135,21 @@ public class JFrame2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(67, 67, 67)
                 .addComponent(PanelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addComponent(PanelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
     private void jRadioButtonUGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonUGActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

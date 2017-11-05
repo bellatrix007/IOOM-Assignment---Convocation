@@ -297,7 +297,7 @@ public class JFrame_Student extends javax.swing.JFrame {
     }//GEN-LAST:event_rollActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         addStudent();
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -308,11 +308,11 @@ public class JFrame_Student extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void deptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deptActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_deptActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
         addStudent();
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
