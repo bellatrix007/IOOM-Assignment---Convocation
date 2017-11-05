@@ -15,15 +15,16 @@ import java.util.ArrayList;
 
 public class Assignment2
 {
-    ArrayList<student> s = new ArrayList<student>();
+    private ArrayList<student> s = new ArrayList<student>();
     
-    public static void main(String args[])
+    public void main(String args[])
     {
         //Scanner sc = new Scanner(System.in);
+        Assignment2 obj = this;
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame2().setVisible(true);
+                new JFrame2(obj).setVisible(true);
             }
         });
         
@@ -80,8 +81,8 @@ public class Assignment2
         //}
     }
     
-    void addS(student s1)
+    ArrayList<student> getStudents()
     {
-        s.add(s1);
+        return s;
     }
 }//end of assignemnt class

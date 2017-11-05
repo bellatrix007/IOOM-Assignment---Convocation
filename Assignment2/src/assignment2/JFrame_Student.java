@@ -1,5 +1,7 @@
 package assignment2;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,12 +19,12 @@ public class JFrame_Student extends javax.swing.JFrame {
      * Creates new form JFrame_UG
      */
     private String course;
-    private Assignment2 obj;
+    private ArrayList<student> s;
     
-    public JFrame_Student(String type) {
-        initComponents();
+    public JFrame_Student(String type, ArrayList<student> s1) {
         course = type;
-        obj = new Assignment2();
+        s = s1;
+        initComponents();
         setFrame();
     }
 
@@ -299,7 +301,7 @@ public class JFrame_Student extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame2().setVisible(true);
+                new JFrame2(s).setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -314,7 +316,7 @@ public class JFrame_Student extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame1().setVisible(true);
+                new JFrame1(s).setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -324,27 +326,27 @@ public class JFrame_Student extends javax.swing.JFrame {
         if(course.equals("UG"))
         {
             UG ug = new UG(course, roll.getText(), name.getText(), dept.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()));
-            obj.addS(ug);
+            s.add(ug);
         }
         else if(course.equals("PG"))
         {
             PG pg = new PG(course, roll.getText(), name.getText(), dept.getText(), specialization.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText());
-            obj.addS(pg);
+            s.add(pg);
         }
         else if(course.equals("UG+PG"))
         {
             UGPG ugPg = new UGPG(course, roll.getText(), name.getText(), dept.getText(), specialization.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText(), Integer.parseInt(year.getText()));
-            obj.addS(ugPg);
+            s.add(ugPg);
         }
         else if(course.equals("PhD"))
         {
             PhD phD = new PhD(course, roll.getText(), name.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(cre.getText()), thesis.getText());
-            obj.addS(phD);
+            s.add(phD);
         }
         else if(course.equals("PG+PhD"))
         {
             PGPhD pgPhD = new PGPhD(course, roll.getText(), name.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText(), Integer.parseInt(year.getText()));
-            obj.addS(pgPhD);
+            s.add(pgPhD);
        }
     }
     
@@ -379,7 +381,7 @@ public class JFrame_Student extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Student("").setVisible(true);
+                new JFrame_Student("",null).setVisible(true);
             }
         });
     }

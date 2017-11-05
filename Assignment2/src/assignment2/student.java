@@ -76,5 +76,10 @@ class student
     {
         return this.name;
     }
+    
+    int getCredits()
+    {
+        return this.credits;
+    }
    
 }//end of student class

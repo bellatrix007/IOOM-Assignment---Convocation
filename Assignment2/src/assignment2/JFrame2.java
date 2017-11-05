@@ -6,14 +6,27 @@
 
 package assignment2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Aditi
  */
 public class JFrame2 extends javax.swing.JFrame {
 
+    private ArrayList<student> s;
+    //private Assignment2 obj;
+    
     /** Creates new form JFrame2 */
-    public JFrame2() {
+    public JFrame2(Assignment2 ob) {
+        //obj = ob;
+        s = ob.getStudents();
+        initComponents();
+    }
+    
+    public JFrame2(ArrayList<student> s1)
+    {
+        s = s1;
         initComponents();
     }
 
@@ -140,7 +153,7 @@ public class JFrame2 extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Student("UG").setVisible(true);
+                new JFrame_Student("UG",s).setVisible(true);
                 
             }
         });
@@ -151,7 +164,7 @@ public class JFrame2 extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Student("UG+PG").setVisible(true);
+                new JFrame_Student("UG+PG",s).setVisible(true);
             }
         });
     }//GEN-LAST:event_jRadioButtonUGPGActionPerformed
@@ -161,7 +174,7 @@ public class JFrame2 extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Student("PhD").setVisible(true);
+                new JFrame_Student("PhD",s).setVisible(true);
             }
         });
     }//GEN-LAST:event_jRadioButtonPhDActionPerformed
@@ -175,7 +188,7 @@ public class JFrame2 extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Student("PG").setVisible(true);
+                new JFrame_Student("PG",s).setVisible(true);
             }
         });
     }//GEN-LAST:event_jRadioButtonPGActionPerformed
@@ -185,7 +198,7 @@ public class JFrame2 extends javax.swing.JFrame {
         this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame_Student("PG+PhD").setVisible(true);
+                new JFrame_Student("PG+PhD",s).setVisible(true);
             }
         });
     }//GEN-LAST:event_jRadioButtonPGPhDActionPerformed
@@ -220,7 +233,7 @@ public class JFrame2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrame2().setVisible(true);
+                new JFrame2(new Assignment2()).setVisible(true);
             }
         });
     }
