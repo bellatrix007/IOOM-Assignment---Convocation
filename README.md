@@ -11,8 +11,7 @@ v. Dual degree postgraduate and doctoral (PG+PhD): Associated with a department 
 
 The minimum and maximum period of registration and credit requirements is given as follows:
 
-Course      Minimum Registration      Maximum Registration      Minimum Credits
-                Period                    Period
+Course-Minimum Registration Period-Maximum Registration Period-Minimum Credits         
  UG               4                         7                         185
  PG               2                         4                         80  
  UG+PG            5                         8                         265 
