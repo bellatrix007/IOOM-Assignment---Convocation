@@ -268,23 +268,20 @@ public class JFrame_Student extends javax.swing.JFrame {
     
     private void setSpecialization()
     {
-        //specializationLabel.setVisible(false);
-        //specialization.setVisible(false);
         specialization.setText("NA");
+        specialization.setEditable(false);
     }
     
     private void setThesis()
     {
-        //thesisLabel.setVisible(false);
-        //thesis.setVisible(false);
         thesis.setText("NA");
+        thesis.setEditable(false);
     }
     
     private void setYear()
     {
-        //yearLabel.setVisible(false);
-        //year.setVisible(false);
         year.setText("NA");
+        year.setEditable(false);
     }
     
     private void setYear(String s)
