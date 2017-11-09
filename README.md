@@ -20,3 +20,9 @@ Course-Minimum Registration Period-Maximum Registration Period-Minimum Credits
  
  The program displays the details of students along with their graduation status.
  One can also add, delete or modify the student details.
+
+TO DO:
+Exception Handling for specific input format (general Exception Handling done).
+Other GUI improvements.
+
+Executable jar file available in Assignment2/dist .
