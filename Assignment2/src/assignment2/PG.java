@@ -24,6 +24,20 @@ class PG extends student    //derived class
         setGradStatus(regPeriod, credits);
     }
     
+    void setGradStatus(int regPeriod, int credits)  //to set if the student is graduating
+    {
+        if((regPeriod>=2&&regPeriod<=8)&&credits>=80)
+            super.setGradStatus();
+    }
+    
+    @Override
+    void display()
+    {
+        if(super.getGradStatus() == 1)
+        {
+            System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.dept+" "+this.specialization+" "+this.CGPA);
+        }
+    }
     void setDept(String s)
     {
         this.dept = s;
@@ -44,18 +58,23 @@ class PG extends student    //derived class
         this.thesisArea = s;
     }
     
-    void setGradStatus(int regPeriod, int credits)  //to set if the student is graduating
+    String getDept()
     {
-        if((regPeriod>=2&&regPeriod<=8)&&credits>=80)
-            super.setGradStatus();
+        return this.dept;
     }
     
-    @Override
-    void display()
+    String getSpe(String s)
     {
-        if(super.getGradStatus() == 1)
-        {
-            System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.dept+" "+this.specialization+" "+this.CGPA);
-        }
+        return this.specialization;
+    }
+    
+    int getCGPA()
+    {
+        return this.CGPA;
+    }
+    
+    String getThesis()
+    {
+        return this.thesisArea;
     }
 }//end of PG class

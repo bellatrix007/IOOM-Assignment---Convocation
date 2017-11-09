@@ -29,6 +29,22 @@ class UGPG extends student  //derived class
         setGradStatus(regPeriod, credits);
     }
     
+    void setGradStatus(int regPeriod, int credits)  //to set the graduating status of student
+    {
+        if((regPeriod>=5&&regPeriod<=8)&&credits>=265)
+            super.setGradStatus();
+    }
+    
+    @Override
+    void display()
+    {
+        if(super.getGradStatus() == 1)
+        {
+            System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.dept+" "+this.specialization+" "+this.CGPA);
+        }
+    }
+    
+    
     void setDept(String s)
     {
         this.dept = s;
@@ -54,18 +70,28 @@ class UGPG extends student  //derived class
         this.year = s;
     }
     
-    void setGradStatus(int regPeriod, int credits)  //to set the graduating status of student
+    String getDept()
     {
-        if((regPeriod>=5&&regPeriod<=8)&&credits>=265)
-            super.setGradStatus();
+        return this.dept;
     }
     
-    @Override
-    void display()
+    String getSpe(String s)
     {
-        if(super.getGradStatus() == 1)
-        {
-            System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.dept+" "+this.specialization+" "+this.CGPA);
-        }
+        return this.specialization;
+    }
+    
+    int getCGPA()
+    {
+        return this.CGPA;
+    }
+    
+    String getThesis()
+    {
+        return this.thesisArea;
+    }
+    
+    int getYear()
+    {
+        return this.year;
     }
 }//end of UGPG class

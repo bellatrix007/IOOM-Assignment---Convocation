@@ -1,6 +1,7 @@
 package assignment2;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -254,13 +255,16 @@ public class JFrame_Student extends javax.swing.JFrame {
         else if(course.equals("PhD"))
         {
             dept.setText("NA");
+            dept.setEditable(false);
             CGPA.setText("NA");
+            CGPA.setEditable(false);
             setSpecialization();
             setYear();
         }
         else if(course.equals("PG+PhD"))
         {
             dept.setText("NA");
+            dept.setEditable(false);
             setSpecialization();
             setYear("Year of Conformation to Doctoral:");
         }
@@ -321,6 +325,7 @@ public class JFrame_Student extends javax.swing.JFrame {
 
     private void addStudent()
     {
+        try{
         if(course.equals("UG"))
         {
             UG ug = new UG(course, roll.getText(), name.getText(), dept.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()));
@@ -345,7 +350,12 @@ public class JFrame_Student extends javax.swing.JFrame {
         {
             PGPhD pgPhD = new PGPhD(course, roll.getText(), name.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText(), Integer.parseInt(year.getText()));
             s.add(pgPhD);
-       }
+        }
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(this,"Input Error - Unknown input found instead of an Integer");
+        }
     }
     
     /**

@@ -24,11 +24,6 @@ class PhD extends student   //derived class
         setGradStatus(regPeriod, credits);
     }
     
-    void setThesis(String s)
-    {
-        this.thesisArea = s;
-    }
-    
     void setGradStatus(int regPeriod, int credits)  //to set the graduating status of student
     {
         if((regPeriod>=2&&regPeriod<=6)&&credits>=64)
@@ -42,5 +37,14 @@ class PhD extends student   //derived class
         {
             System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse());
         }
+    }
+    void setThesis(String s)
+    {
+        this.thesisArea = s;
+    }
+    
+    String getThesis()
+    {
+        return this.thesisArea;
     }
 }//end of PhD class

@@ -26,16 +26,6 @@ class UG extends student    //derived class
         setGradStatus(regPeriod, credits);
     }
     
-    void setDept(String s)
-    {
-        this.dept = s;
-    }
-    
-    void setCGPA(int s)
-    {
-        this.CGPA = s;
-    }
-    
     void setGradStatus(int regPeriod, int credits)  //to set if the student is graduating
     {
         if((regPeriod>=4&&regPeriod<=7)&&credits>=185)
@@ -49,6 +39,25 @@ class UG extends student    //derived class
         {
             System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.dept+" "+this.CGPA);
         }
+    }
+    void setDept(String s)
+    {
+        this.dept = s;
+    }
+    
+    void setCGPA(int s)
+    {
+        this.CGPA = s;
+    }
+    
+    String getDept()
+    {
+        return this.dept;
+    }
+    
+    int getCGPA()
+    {
+        return this.CGPA;
     }
     
 }//end of UG class

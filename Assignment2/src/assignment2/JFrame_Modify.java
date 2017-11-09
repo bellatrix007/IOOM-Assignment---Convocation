@@ -7,6 +7,7 @@ package assignment2;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,11 +21,14 @@ public class JFrame_Modify extends javax.swing.JFrame {
     
     private ArrayList<student> s;
     private ListIterator it;
+    private String prevC;
     
     public JFrame_Modify(ArrayList<student> s1,ListIterator litr) {
         s = s1;
         it = litr;
         initComponents();
+        setDetails();
+        prevC = course.getText();
     }
 
     /**
@@ -62,12 +66,17 @@ public class JFrame_Modify extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "MODIFY", 0, 0, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 0, 153))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "MODIFY", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 0, 153))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel1.setText("Select Field To Be Modified:");
 
         courseRadioButton.setText("Course");
+        courseRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseRadioButtonActionPerformed(evt);
+            }
+        });
 
         rollRadioButton.setText("Roll Number");
         rollRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,10 +88,25 @@ public class JFrame_Modify extends javax.swing.JFrame {
         nameRadioButton.setText("Name");
 
         deptRadioButton.setText("Department");
+        deptRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deptRadioButtonActionPerformed(evt);
+            }
+        });
 
         speRadioButton.setText("Specialization");
+        speRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speRadioButtonActionPerformed(evt);
+            }
+        });
 
         regRadioButton.setText("Period of Registration");
+        regRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regRadioButtonActionPerformed(evt);
+            }
+        });
 
         CGPARadioButton.setText("CGPA");
         CGPARadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +116,21 @@ public class JFrame_Modify extends javax.swing.JFrame {
         });
 
         creRadioButton.setText("Credits");
+        creRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creRadioButtonActionPerformed(evt);
+            }
+        });
 
         thesisRadioButton.setText("Thesis Area");
 
         yearRadioButton.setText("Year of Conformation");
+
+        course.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseActionPerformed(evt);
+            }
+        });
 
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,31 +312,254 @@ public class JFrame_Modify extends javax.swing.JFrame {
         
         it.previous();
         student s1 = (student)it.next();
-        if(courseRadioButton.isSelected())
-            s1.setCourse(course.getText());
+        try{
         if(rollRadioButton.isSelected())
+        {
+            if(roll.getText().equals(""))
+                throw new EmptyFieldException("Empty Roll Field");
             s1.setRoll(roll.getText());
+        }
         if(nameRadioButton.isSelected())
+        {
+            if(name.getText().equals(""))
+                throw new EmptyFieldException("Empty Name Field");
             s1.setName(name.getText());
+        }
         if(deptRadioButton.isSelected())
+        {
+            if(dept.getText().equals(""))
+                throw new EmptyFieldException("Empty Department Field");
             s1.setDept(dept.getText());
+        }
         if(speRadioButton.isSelected())
+        {
+            if(spe.getText().equals(""))
+                throw new EmptyFieldException("Empty Specialization Field");
             s1.setSpe(spe.getText());
+        }
         if(regRadioButton.isSelected())
+        {
+            if(reg.getText().equals(""))
+                throw new EmptyFieldException("Empty Registration Period Field");
             s1.setReg(Integer.parseInt(reg.getText()));
+        }
         if(CGPARadioButton.isSelected())
+        {
+            if(CGPA.getText().equals(""))
+                throw new EmptyFieldException("Empty CGPA Field");
             s1.setCGPA(Integer.parseInt(CGPA.getText()));
+        }
         if(creRadioButton.isSelected())
+        {
+            if(cre.getText().equals(""))
+                throw new EmptyFieldException("Empty Credits Field");
             s1.setCredits(Integer.parseInt(cre.getText()));
+        }
         if(thesisRadioButton.isSelected())
+        {
+            if(thesis.getText().equals(""))
+                throw new EmptyFieldException("Empty Thesis Area Field");
             s1.setThesis(thesis.getText());
+        }
         if(yearRadioButton.isSelected())
+        {
+            if(year.getText().equals(""))
+                throw new EmptyFieldException("Empty Year Field");
             s1.setYear(Integer.parseInt(year.getText()));
+        }
+        if(courseRadioButton.isSelected()&&!course.getText().equals(""))
+        {
+            s1.setCourse(course.getText());
+            s1 = setStudent();
+        }
         s1.setGradStatus();
         it.previous();
         callJFrame1(it);
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(this,"Input Error - Unknown input found instead of an Integer");
+        }
+        catch(EmptyFieldException e)
+        {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+        catch(InvalidCourseException e)
+        {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
     }//GEN-LAST:event_okButtonActionPerformed
 
+    private student setStudent()throws InvalidCourseException
+    {
+        String c = course.getText();
+        student s1 = null;
+        if(c.equals("UG"))
+        {
+            UG ug = new UG(c, roll.getText(), name.getText(), dept.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()));
+            s1 = ug;
+        }
+        else if(c.equals("PG"))
+        {
+            PG pg = new PG(c, roll.getText(), name.getText(), dept.getText(), spe.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText());
+            s1 = pg;
+        }
+        else if(c.equals("UG+PG"))
+        {
+            UGPG ugPg = new UGPG(c, roll.getText(), name.getText(), dept.getText(), spe.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText(), Integer.parseInt(year.getText()));
+            s1 = ugPg;
+        }
+        else if(c.equals("PhD"))
+        {
+            PhD phD = new PhD(c, roll.getText(), name.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(cre.getText()), thesis.getText());
+            s1 = phD;
+        }
+        else if(c.equals("PG+PhD"))
+        {
+            PGPhD pgPhD = new PGPhD(c, roll.getText(), name.getText(), Integer.parseInt(reg.getText()), Integer.parseInt(CGPA.getText()), Integer.parseInt(cre.getText()), thesis.getText(), Integer.parseInt(year.getText()));
+            s1 = pgPhD;
+        }
+        else
+            throw new InvalidCourseException("Invalid Course");
+        return s1;
+    }
+    
+    private void courseRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseRadioButtonActionPerformed
+
+    private void deptRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deptRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deptRadioButtonActionPerformed
+
+    private void speRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_speRadioButtonActionPerformed
+
+    private void regRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regRadioButtonActionPerformed
+
+    private void creRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creRadioButtonActionPerformed
+
+    private void courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseActionPerformed
+        if(courseRadioButton.isSelected()&&!prevC.equals(course.getText()))
+        {String c = course.getText();
+        if(c.equals("UG"))
+        {
+            setSpecialization();
+            setThesis();
+            setYear();
+            checkDept();
+            checkCGPA();
+        }
+        else if(c.equals("PG"))
+        {
+            setYear();
+            checkSpe();
+            checkThesis();
+            checkDept();
+            checkCGPA();
+        }
+        else if(c.equals("UG+PG"))
+        {
+            checkYear();
+            checkSpe();
+            checkThesis();
+            checkDept();
+            checkCGPA();
+        }
+        else if(c.equals("PhD"))
+        {
+            dept.setText("NA");
+            dept.setEditable(false);
+            CGPA.setText("NA");
+            CGPA.setEditable(false);
+            setSpecialization();
+            setYear();
+            checkThesis();
+        }
+        else if(c.equals("PG+PhD"))
+        {
+            dept.setText("NA");
+            dept.setEditable(false);
+            setSpecialization();
+            checkYear();
+            checkThesis();
+            checkCGPA();
+        }}
+    }//GEN-LAST:event_courseActionPerformed
+
+    private void checkDept()
+    {
+        if(dept.getText().equals("NA"))
+        {    
+            dept.setEditable(true);
+            dept.setText("");
+            deptRadioButton.setSelected(true);
+        }
+    }
+    
+    private void checkYear()
+    {
+        if(year.getText().equals("NA"))
+        {    
+            year.setEditable(true);
+            year.setText("");
+            yearRadioButton.setSelected(true);
+        }
+    }
+    
+    private void checkCGPA()
+    {
+        if(CGPA.getText().equals("NA"))
+        {    
+            CGPA.setEditable(true);
+            CGPA.setText("");
+            CGPARadioButton.setSelected(true);
+        }
+    }
+    
+    private void checkSpe()
+    {
+        if(spe.getText().equals("NA"))
+        {    
+            spe.setEditable(true);
+            spe.setText("");
+            speRadioButton.setSelected(true);
+        }
+    }
+    
+    private void checkThesis()
+    {
+        if(thesis.getText().equals("NA"))
+        {    
+            thesis.setEditable(true);
+            thesis.setText("");
+            thesisRadioButton.setSelected(true);
+        }
+    }
+    
+    private void setSpecialization()
+    {
+        spe.setText("NA");
+        spe.setEditable(false);
+    }
+    
+    private void setThesis()
+    {
+        thesis.setText("NA");
+        thesis.setEditable(false);
+    }
+    
+    private void setYear()
+    {
+        year.setText("NA");
+        year.setEditable(false);
+    }
+    
     private void callJFrame1(ListIterator it)
     {
         this.setVisible(false);
@@ -310,6 +568,40 @@ public class JFrame_Modify extends javax.swing.JFrame {
                 new JFrame1(s,it).setVisible(true);
             }
         });
+    }
+    
+    private void setDetails()
+    {
+        it.previous();
+        student s1 = (student)it.next();
+        course.setText(s1.getCourse());
+        roll.setText(s1.getRollNumber());
+        name.setText(s1.getName());
+        if(s1.getDept()=="NA")
+            dept.setEditable(false);
+        dept.setText(s1.getDept());
+        if(s1.getSpe()=="NA")
+            spe.setEditable(false);
+        spe.setText(s1.getDept());
+        reg.setText(Integer.toString(s1.getReg()));
+        if(s1.getCGPA()==0)
+        {
+            CGPA.setText("NA");
+            CGPA.setEditable(false);
+        }
+        else
+           CGPA.setText(Integer.toString(s1.getCGPA())); 
+        cre.setText(Integer.toString(s1.getCredits()));
+        if(s1.getThesis()=="NA")
+            thesis.setEditable(false);
+        thesis.setText(s1.getThesis());
+        if(s1.getYear()==0)
+        {
+            year.setText("NA");
+            year.setEditable(false);
+        }
+        else
+            year.setText(Integer.toString(s1.getYear()));
     }
     
     /**

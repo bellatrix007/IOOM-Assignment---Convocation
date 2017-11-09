@@ -132,5 +132,34 @@ class student
     {
         return this.credits;
     }
+    
+    String getDept()
+    {
+        return "NA";
+    }
+    
+    String getSpe()
+    {
+        return "NA";
+    }
    
+    int getReg()
+    {
+        return this.regPeriod;
+    }
+    
+    int getCGPA()
+    {
+        return 0;
+    }
+    
+    int getYear()
+    {
+        return 0;
+    }
+    
+    String getThesis()
+    {
+        return "NA";
+    }
 }//end of student class

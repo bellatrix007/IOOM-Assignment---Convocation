@@ -212,6 +212,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Course"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rollRadioButton">
           <Properties>
@@ -230,16 +233,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Department"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deptRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="speRadioButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Specialization"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="speRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="regRadioButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Period of Registration"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="CGPARadioButton">
           <Properties>
@@ -253,6 +265,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Credits"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="thesisRadioButton">
           <Properties>
@@ -265,6 +280,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="course">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="roll">
         </Component>
