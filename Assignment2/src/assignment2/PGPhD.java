@@ -23,6 +23,20 @@ class PGPhD extends student //derived class
         setGradStatus(regPeriod, credits);
     }
     
+    void setGradStatus(int regPeriod, int credits)  //to set the graduating status of student
+    {
+        if((regPeriod>=4&&regPeriod<=7)&&credits>=138)
+            super.setGradStatus();
+    }
+    
+    @Override
+    void display()  
+    {
+        if(super.getGradStatus() == 1)
+        {
+            System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.CGPA);
+        }
+    }
     void setCGPA(int s)
     {
         this.CGPA = s;
@@ -38,18 +52,18 @@ class PGPhD extends student //derived class
         this.year = s;
     }
     
-    void setGradStatus(int regPeriod, int credits)  //to set the graduating status of student
+    int getCGPA()
     {
-        if((regPeriod>=4&&regPeriod<=7)&&credits>=138)
-            super.setGradStatus();
+        return this.CGPA;
     }
     
-    @Override
-    void display()  
+    String getThesis()
     {
-        if(super.getGradStatus() == 1)
-        {
-            System.out.println(super.getRollNumber()+" "+super.getName()+" "+super.getCourse()+" "+this.CGPA);
-        }
+        return this.thesisArea;
+    }
+    
+    int getYear()
+    {
+        return this.year;
     }
 }//end of PGPhD class
